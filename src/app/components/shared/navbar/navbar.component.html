@@ -1,0 +1,38 @@
+<nav #navbar class="navbar navbar-expand-lg navbar-transparent navbar-absolute">
+  <div class="container-fluid">
+    <div class="navbar-wrapper">
+      <div class="navbar-minimize" *ngIf="!auth" >
+        <button mat-raised-button (click)="minimizeSidebar()" class="btn btn-just-icon btn-white btn-fab btn-round">
+          <i class="material-icons text_align-center visible-on-sidebar-regular">more_vert</i>
+          <i class="material-icons design_bullet-list-67 visible-on-sidebar-mini">view_list</i>
+        </button>
+      </div>
+      <a class="navbar-brand" [ngClass]="{'fontBranca': auth}" href="{{getPath()}}"> {{ getTitle() | translate }}</a>
+    </div>
+    <button mat-button class="navbar-toggler btn-no-ripple" type="button" (click)="sidebarToggle()">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="navbar-toggler-icon icon-bar"></span>
+      <span class="navbar-toggler-icon icon-bar"></span>
+      <span class="navbar-toggler-icon icon-bar"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end mt-2 mr-3" id="navigation">
+      <form class="navbar-form">
+        <div class="input-group no-border">
+          <mat-form-field style="width: 100px;">
+            <mat-select placeholder="{{ 'lang' | translate }}" name="lang" [(ngModel)]="selectedLanguage" [ngClass]="{'fontBranca': auth}">
+              <mat-option *ngFor="let language of languages" [value]="language.value">
+                {{language.name | translate }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </form>
+      <button mat-icon-button class="cursor">
+        <a [href]="linkHelp" target="_blank" style="color: #bd2130">
+          <mat-icon matTooltip="{{ 'action.help' | translate }}">help</mat-icon>
+        </a>
+      </button>
+    </div>
+  </div>
+</nav>

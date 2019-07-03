@@ -1,0 +1,17 @@
+<mat-form-field class="col-12">
+  <mat-label>{{ textLabel | translate}}</mat-label>
+  <input matInput [matAutocomplete]="auto" maxlength="45" (focusout)="validaValor()" #autocomplete="ngModel"
+    [(ngModel)]="dataInput" (ngModelChange)="search()" (click)="search()" (focus)="search()" [required]="required" [disabled]="disabled">
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectedInput = true">
+    <mat-option *ngFor="let item of filter" [value]="item">
+      {{item}}
+    </mat-option>
+    <mat-option class="disabled-option" *ngIf="!listFilter.length" disabled [value]="">{{ textErrorLength | translate }}</mat-option>
+  </mat-autocomplete>
+  <mat-error *ngIf="autocomplete.invalid && (autocomplete.dirty || autocomplete.touched)">
+    <mat-error *ngIf="autocomplete.hasError('required')">
+      {{ textError | translate }}
+      <strong>{{ 'required' | translate }}.</strong>
+    </mat-error>
+  </mat-error>
+</mat-form-field>

@@ -1,0 +1,38 @@
+<div class="text-center logo logo-normal">
+    <img class="logo_img" src="./assets/img/logo.svg" />
+</div>
+
+<div class="sidebar-wrapper pb-0">
+    <ul class="nav">
+        <li routerLinkActive="active" *ngFor="let menuitem of menuItems" class="nav-item">
+            <!--If is a single link-->
+            <a [routerLink]="[menuitem.path]" *ngIf="menuitem.type === 'link'  && menuitem.view" class="nav-link">
+                <i class="material-icons">{{menuitem.icontype}}</i>
+                <p>{{ menuitem.title | translate }}</p>
+            </a>
+            <!--If it have a submenu-->
+            <a data-toggle="collapse" href="#{{menuitem.collapse}}" *ngIf="menuitem.type === 'sub' && menuitem.view"
+                (click)="updatePS()" class="nav-link">
+                <i class="material-icons">{{menuitem.icontype}}</i>
+                <p>{{ menuitem.title | translate }}
+                    <b class="caret"></b>
+                </p>
+            </a>
+
+            <!--Display the submenu items-->
+            <div id="{{menuitem.collapse}}" class="collapse" *ngIf="menuitem.type === 'sub'">
+                <ul class="nav">
+                    <li routerLinkActive="active" *ngFor="let childitem of menuitem.children" class="nav-item">
+                        <a [routerLink]="[menuitem.path, childitem.path]" class="nav-link pl-3" *ngIf="childitem.view">
+                            <!-- <i class="material-icons">{{childitem.icontype}}</i> -->
+                            <span class="sidebar-mini">{{ childitem.ab | translate }}</span>
+                            <span class="sidebar-normal">{{ childitem.title | translate }}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+
+        

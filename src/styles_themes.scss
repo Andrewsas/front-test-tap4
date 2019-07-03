@@ -1,0 +1,54 @@
+@mixin themable($color-primary, $color-secondary, $color-tertiary) {
+  // .#{$theme-name} {
+  .primary {
+    color: $color-primary !important;
+  }
+
+  .secondary {
+    color: $color-secondary !important;
+  }
+
+  .tertiary {
+    color: $color-tertiary !important;
+  }
+
+  .bg-primary {
+    background-color: $color-primary !important;
+  }
+
+  .bg-secondary {
+    background-color: $color-secondary !important;
+  }
+
+  .bg-tertiary {
+    background-color: $color-tertiary !important;
+  }
+
+  .mat-progress-spinner circle,
+  .mat-spinner circle {
+    stroke: $color-primary !important;
+  }
+
+  .card-icon {
+    background: linear-gradient(
+      60deg,
+      $color-primary,
+      $color-primary
+    ) !important;
+  }
+
+  .profile img {
+    border-radius: 50%;
+    width: 175px;
+    height: 175px;
+    border: 3px solid $color-tertiary;
+  }
+
+  .profile img :hover {
+    border: 3px solid $color-primary;
+  }
+
+  // }
+}
+
+@include themable(#cb2749, #383e88, #999);

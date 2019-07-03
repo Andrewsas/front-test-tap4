@@ -1,0 +1,60 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-primary card-header-icon">
+            <div class="card-icon">
+              <i class="material-icons">visibility</i>
+            </div>
+            <h4 class="card-title">{{ 'view.title' | translate }}</h4>
+          </div>
+          <div class="card-body">
+            <div class="row justify-content-center col-12 mt-3 ">
+              <div class="col-12 col-md-4 text-center">
+                <div class="circle mx-auto ">
+                  <img *ngIf="obj.image; else avata" [src]="obj.image" />
+                  <ng-template #avata>
+                    <img src="./assets/img/default.svg" />
+                  </ng-template>
+                </div>
+              </div>
+              <div class="row align-self-center col-12 sm-12 col-md-6 p-0">
+                <div class="col-12">
+                  <span class="font-weight-bold">{{ 'language.name' | translate }}: </span>
+                  <p class="font-weight-light d-inline">{{ obj.name | uppercase }}</p>
+                </div>
+                <div class="col-12">
+                  <span class="font-weight-bold">{{ 'language.creator' | translate }}: </span>
+                  <p class="font-weight-light d-inline">{{ obj?.creator }}</p>
+                </div>
+                <div class="col-12">
+                  <span class="font-weight-bold" *ngIf="obj.pis">{{ 'language.site' | translate }}: </span>
+                  <p class="font-weight-light d-inline">{{ obj?.site }}</p>
+                </div>
+              </div>
+              <div class="row justify-content-start col-12 mt-4">
+                <div class="col-12 col-sm-6 col-md-5">
+                  <span class="font-weight-bold">{{ 'language.language' | translate }}: </span>
+                  <p class="font-weight-light d-inline">{{ obj?.language }}</p>
+                </div>
+                <div class="col-12 col-sm-6 col-md-5">
+                  <span class="font-weight-bold">{{ 'language.type' | translate }}: </span>
+                  <p class="font-weight-light d-inline">{{ obj?.type }}</p>
+                </div>
+                <div class="col-12 col-sm-6 col-md-5">
+                  <span class="font-weight-bold">{{ 'language.year' | translate }}: </span>
+                  <p class="font-weight-light d-inline">{{ obj?.year }}</p>
+                </div>
+                <div class="col-12 col-sm-6 col-md-5">
+                  <span class="font-weight-bold">{{ 'language.version' | translate }}: </span>
+                  <p class="font-weight-light d-inline">{{ obj?.version }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

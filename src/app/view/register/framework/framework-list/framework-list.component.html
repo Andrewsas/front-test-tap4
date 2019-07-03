@@ -1,0 +1,100 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <mat-progress-bar mode="indeterminate" *ngIf="refresh"></mat-progress-bar>
+          <div class="card-header card-header-primary card-header-icon">
+            <div class="card-icon">
+              <i class="material-icons">format_list_bulleted</i>
+            </div>
+            <div class="row mt-3">
+              <h4 class="card-title col-8  m-0 p-0">{{ 'framework.list' | translate }}</h4>
+              <p class="text-right col-4 m-0 p-0" style="color:black" *ngIf="refresh">{{ 'refresh' | translate }}</p>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="toolbar">
+              <div class="row">
+                <div class="col-3">
+                  <mat-form-field class="pull-left">
+                    <mat-label>{{ 'search' | translate }}</mat-label>
+                    <input type="search" matInput (keyup)="applyFilter($event.target.value)">
+                    <mat-icon matSuffix>search</mat-icon>
+                  </mat-form-field>
+                </div>
+
+                <div class="col-9">
+                  <div class="pull-right">
+                    <button class="btn btn-secondary mr-2" (click)="newRecord()">
+                      <i class="material-icons">add</i>
+                      {{ 'framework' | translate }}
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="material-datatables">
+                <div class="material-datatables table-responsive">
+                  <div class="example-container mat-elevation-z8">
+                    <mat-table #table [dataSource]="dataSource" matSort>
+                      <ng-container matColumnDef="name">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'framework.name' | translate }}
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let item"> {{ item?.name }} </mat-cell>
+                      </ng-container>
+
+                      <ng-container matColumnDef="version">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'framework.version' | translate }}
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let item"> {{ item?.version }} </mat-cell>
+                      </ng-container>
+
+                      <ng-container matColumnDef="creator">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'framework.creator' | translate }}
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let item"> {{ item?.creator }} </mat-cell>
+                      </ng-container>
+
+                      <ng-container matColumnDef="action">
+                        <mat-header-cell class="text-right" *matHeaderCellDef> {{ 'table.action' | translate }}
+                        </mat-header-cell>
+                        <mat-cell class="text-right" *matCellDef="let item">
+                          <button mat-icon-button class="cursor">
+                            <mat-icon class="icon-acoes" (click)="copy(item)" matTooltip="Duplicar Registro">file_copy
+                            </mat-icon>
+                          </button>
+                          <button mat-icon-button class="cursor">
+                            <mat-icon class="icon-acoes" (click)="openDialog(item.id)" matTooltip="Visualizar Detalhes">
+                              visibility</mat-icon>
+                          </button>
+                          <button mat-icon-button class="cursor">
+                            <mat-icon class="icon-acoes" (click)="edit(item)" matTooltip="Editar Registro">mode_edit
+                            </mat-icon>
+                          </button>
+                          <button mat-icon-button class="cursor">
+                            <mat-icon class="icon-acoes" (click)="delete(item)" matTooltip="Desativar Registro">delete
+                            </mat-icon>
+                          </button>
+                          <button mat-icon-button class="cursor" *ngIf="del && item.deleted">
+                            <mat-icon class="icon-acoes" (click)="delete(item)" matTooltip="Restaurar Registro">restore
+                            </mat-icon>
+                          </button>
+                        </mat-cell>
+                      </ng-container>
+
+                      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                      <mat-row *matRowDef="let item; columns: displayedColumns;">
+                      </mat-row>
+                    </mat-table>
+                    <mat-paginator [pageSizeOptions]="itensPage"></mat-paginator>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

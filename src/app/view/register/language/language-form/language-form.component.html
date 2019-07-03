@@ -1,0 +1,132 @@
+<div class="main-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card ">
+            <div class="card-header card-header-primary card-header-icon">
+              <div class="card-icon">
+                <i class="material-icons">format_list_bulleted</i>
+              </div>
+              <h4 class="card-title" *ngIf="!edit; else editar">{{ 'language.create' | translate }}</h4>
+              <ng-template #editar>
+                <h4 class="card-title">{{ 'language.edit' | translate }}</h4>
+              </ng-template>
+            </div>
+            <div class="card-body row justify-content-center p-5">
+              <div class="col-12">
+                <form #langForm="ngForm">
+                  <input #foto class="d-none" type="file" accept="image/x-png,image/jpeg" (change)="fotoSelected()">
+                  <div class="row justify-content-center mt-3">
+                    <div class="profile cursor col-12 col-md-4 text-center">
+                      <div class="circle mx-auto" (click)="selecionaFoto()">
+                        <img *ngIf="obj && obj.image; else avata" [src]="obj.image" #img />
+                        <ng-template #avata>
+                          <img src="./assets/img/default.svg" />
+                        </ng-template>
+                      </div>
+                      <h6 class="description mt-2" (click)="selecionaFoto()">{{ 'change.image' | translate }}</h6>
+                      <h6 class="description mt-2" *ngIf="obj.photo" (click)="obj.photo = ''">{{ 'remove.image' | translate }}</h6>
+                    </div>
+                    <div class="row align-self-center col-12 sm-12 col-md-6 p-0">
+                      <mat-form-field class="col-12">
+                        <input matInput name="name" #name="ngModel" [(ngModel)]="obj.name"
+                          placeholder="{{ 'language.name' | translate }}" required minlength="5" maxlength="100"
+                          (blur)="titleCase()">
+                        <mat-error *ngIf="name.invalid && (name.dirty || name.touched)">
+                          <mat-error *ngIf="name.hasError('required')">
+                            {{ 'language.msg.name' | translate }}
+                            <strong>{{ 'required' | translate }}"</strong>
+                          </mat-error>
+                          <mat-error *ngIf="name.hasError('minlength')">
+                            {{ 'language.msg.size.name' | translate }}
+                          </mat-error>
+                        </mat-error>
+                      </mat-form-field>
+  
+                      <mat-form-field class="col-12">
+                        <input matInput name="creator" #create="ngModel" [(ngModel)]="obj.creator"
+                          placeholder="{{ 'language.creator' | translate }}" required minlength="5" maxlength="100"
+                          (blur)="titleCase()">
+                        <mat-error *ngIf="create.invalid && (create.dirty || create.touched)">
+                          <mat-error *ngIf="create.hasError('required')">
+                            {{ 'language.msg.creator' | translate }}
+                            <strong>{{ 'required' | translate }}"</strong>
+                          </mat-error>
+                          <mat-error *ngIf="create.hasError('minlength')">
+                            {{ 'language.msg.size.creator' | translate }}
+                          </mat-error>
+                        </mat-error>
+                      </mat-form-field>
+  
+                      <mat-form-field class="col-12">
+                        <input matInput name="site" #site="ngModel" [(ngModel)]="obj.site"
+                          placeholder="{{ 'language.site' | translate }}" required minlength="5" maxlength="100"
+                          (blur)="titleCase()">
+                        <mat-error *ngIf="site.invalid && (site.dirty || site.touched)">
+                          <mat-error *ngIf="site.hasError('required')">
+                            {{ 'language.msg.site' | translate }}
+                            <strong>{{ 'required' | translate }}"</strong>
+                          </mat-error>
+                          <mat-error *ngIf="site.hasError('minlength')">
+                            {{ 'language.msg.size.site' | translate }}
+                          </mat-error>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+  
+                    <mat-form-field class="col-12 col-md-5">
+                      <mat-select #manager="ngModel" required name="manager" [(ngModel)]="obj.type"
+                        placeholder="{{ 'language.type' | translate }}">
+                        <mat-option value="Micro">Micro</mat-option>
+                        <mat-option value="Full-Stack">Full-Stack</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+  
+                    <mat-form-field class="col-12 col-md-5 pl-3">
+                      <input matInput name="site" #ano="ngModel" [(ngModel)]="obj.year"
+                        placeholder="{{ 'language.year' | translate }}" required length="4" (blur)="titleCase()">
+                      <mat-error *ngIf="ano.invalid && (ano.dirty || ano.touched)">
+                        <mat-error *ngIf="ano.hasError('required')">
+                          {{ 'language.msg.year' | translate }}
+                          <strong>{{ 'required' | translate }}"</strong>
+                        </mat-error>
+                        <mat-error *ngIf="ano.hasError('length')">
+                          {{ 'language.msg.size.year' | translate }}
+                        </mat-error>
+                      </mat-error>
+                    </mat-form-field>
+  
+                    <mat-form-field class="col-12 col-md-5 pl-3">
+                      <input matInput name="site" #versao="ngModel" [(ngModel)]="obj.version"
+                        placeholder="{{ 'language.version' | translate }}" required length="4" (blur)="titleCase()">
+                      <mat-error *ngIf="versao.invalid && (versao.dirty || versao.touched)">
+                        <mat-error *ngIf="versao.hasError('required')">
+                          {{ 'language.msg.version' | translate }}
+                          <strong>{{ 'required' | translate }}"</strong>
+                        </mat-error>
+                      </mat-error>
+                    </mat-form-field>
+  
+                  </div>
+                </form>
+                <div class="card-footer justify-content-end">
+                  <div *ngIf="edit" class=" mr-4">
+                    <button type="button" class="btn btn-secondary mr-2" (click)="returnScreen()">
+                      Cancelar
+                    </button>
+                    <button type="button" class="btn btn-primary" [disabled]="!langForm.form.valid"
+                      (click)="updateOrCreate()">Atualizar</button>
+                  </div>
+                  <div *ngIf="!edit" class="mr-sm-0 mr-md-5">
+                    <button type="button" class="btn btn-secondary mr-2" (click)="returnScreen()">Voltar</button>
+                    <button type="button" class="btn btn-primary" [disabled]="!langForm.form.valid"
+                      (click)="updateOrCreate()">Salva</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
