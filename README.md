@@ -1,7 +1,7 @@
-# WebService Node usando TypeScript
+# Teste Tap 4
 
-Esse projeto se trata de uma estrura de Angular 7 com o template materal DashBoard do Creative Team, o mesmo visa agilizar o desenvolvimento de funções basicas de qualquer sistema front-end.
-O Mesmo Disponibiliza componentes genericos para agilizar a construção de formulários e relátoios, além de implementar uma estrutra de serviço generica.
+OBS : Esse projeto e resultado de um teste para vaga de Programador Junior,
+O mesmo foi realizado usando oo Frameworks Angular para o FrontEnd.
 
 ## Start 
 
