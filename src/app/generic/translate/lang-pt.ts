@@ -17,7 +17,7 @@ export const LANG_PT_TRANS = {
   'framework.name': 'Nome',
   'framework.version': 'Versão',
   'framework.creator': 'Criador',
-  'framework.site': 'Criador',
+  'framework.site': 'Site',
   'framework.language': 'Linguagem do Framework',
   'framework.type': 'Tipo de Framework',
   'framework.year': 'Ano de Criação Framework',
@@ -42,7 +42,7 @@ export const LANG_PT_TRANS = {
 'language.name': 'Nome',
 'language.version': 'Versão',
 'language.creator': 'Criador',
-'language.site': 'Criador',
+'language.site': 'Site',
 'language.language': 'Linguagem do Linguagem',
 'language.type': 'Tipo de Linguagem',
 'language.year': 'Ano de Criação Linguagem',
@@ -60,6 +60,7 @@ export const LANG_PT_TRANS = {
 
   // general
   'search': 'Buscar',
+  'refresh': 'Atualizando...',
   'table.action': 'Ações Rápidas',
   'table.action2': 'Ações',
   'action.edit': 'Editar',

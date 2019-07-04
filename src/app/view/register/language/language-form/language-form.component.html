@@ -25,12 +25,12 @@
                         </ng-template>
                       </div>
                       <h6 class="description mt-2" (click)="selecionaFoto()">{{ 'change.image' | translate }}</h6>
-                      <h6 class="description mt-2" *ngIf="obj.photo" (click)="obj.photo = ''">{{ 'remove.image' | translate }}</h6>
+                      <h6 class="description mt-2" *ngIf="obj.image" (click)="obj.image = ''">{{ 'remove.image' | translate }}</h6>
                     </div>
                     <div class="row align-self-center col-12 sm-12 col-md-6 p-0">
                       <mat-form-field class="col-12">
                         <input matInput name="name" #name="ngModel" [(ngModel)]="obj.name"
-                          placeholder="{{ 'language.name' | translate }}" required minlength="5" maxlength="100"
+                          placeholder="{{ 'language.name' | translate }}" required minlength="3" maxlength="100"
                           (blur)="titleCase()">
                         <mat-error *ngIf="name.invalid && (name.dirty || name.touched)">
                           <mat-error *ngIf="name.hasError('required')">
@@ -45,7 +45,7 @@
   
                       <mat-form-field class="col-12">
                         <input matInput name="creator" #create="ngModel" [(ngModel)]="obj.creator"
-                          placeholder="{{ 'language.creator' | translate }}" required minlength="5" maxlength="100"
+                          placeholder="{{ 'language.creator' | translate }}" required minlength="3" maxlength="100"
                           (blur)="titleCase()">
                         <mat-error *ngIf="create.invalid && (create.dirty || create.touched)">
                           <mat-error *ngIf="create.hasError('required')">
@@ -60,7 +60,7 @@
   
                       <mat-form-field class="col-12">
                         <input matInput name="site" #site="ngModel" [(ngModel)]="obj.site"
-                          placeholder="{{ 'language.site' | translate }}" required minlength="5" maxlength="100"
+                          placeholder="{{ 'language.site' | translate }}" required minlength="3" maxlength="100"
                           (blur)="titleCase()">
                         <mat-error *ngIf="site.invalid && (site.dirty || site.touched)">
                           <mat-error *ngIf="site.hasError('required')">
@@ -83,7 +83,7 @@
                     </mat-form-field>
   
                     <mat-form-field class="col-12 col-md-5 pl-3">
-                      <input matInput name="site" #ano="ngModel" [(ngModel)]="obj.year"
+                      <input matInput name="ano" #ano="ngModel" [(ngModel)]="obj.year"
                         placeholder="{{ 'language.year' | translate }}" required length="4" (blur)="titleCase()">
                       <mat-error *ngIf="ano.invalid && (ano.dirty || ano.touched)">
                         <mat-error *ngIf="ano.hasError('required')">
@@ -96,16 +96,18 @@
                       </mat-error>
                     </mat-form-field>
   
-                    <mat-form-field class="col-12 col-md-5 pl-3">
-                      <input matInput name="site" #versao="ngModel" [(ngModel)]="obj.version"
-                        placeholder="{{ 'language.version' | translate }}" required length="4" (blur)="titleCase()">
-                      <mat-error *ngIf="versao.invalid && (versao.dirty || versao.touched)">
-                        <mat-error *ngIf="versao.hasError('required')">
-                          {{ 'language.msg.version' | translate }}
-                          <strong>{{ 'required' | translate }}"</strong>
+                    <div class="col-12 col-md-10 p-0">
+                      <mat-form-field class="col-12 col-md-6">
+                        <input matInput name="versao" #versao="ngModel" [(ngModel)]="obj.version"
+                          placeholder="{{ 'language.version' | translate }}" required length="4" (blur)="titleCase()">
+                        <mat-error *ngIf="versao.invalid && (versao.dirty || versao.touched)">
+                          <mat-error *ngIf="versao.hasError('required')">
+                            {{ 'language.msg.version' | translate }}
+                            <strong>{{ 'required' | translate }}"</strong>
+                          </mat-error>
                         </mat-error>
-                      </mat-error>
-                    </mat-form-field>
+                      </mat-form-field>
+                    </div>
   
                   </div>
                 </form>

@@ -6,5 +6,6 @@ export class Language extends BaseModel {
     site: string;
     type: string;
     year: number;
+    image: number;
     version: string;
 }

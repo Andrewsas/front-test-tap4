@@ -23,9 +23,9 @@ export abstract class GenericListComponent<TModel extends any, TService extends 
     public del: Boolean = false;
     public cre: Boolean = false;
     public itensPage: Number[] = [10, 20, 40, 80];
-    public search: any = {
-        erased: false
-    };
+    // public search: any = {
+    //     erased: false
+    // };
 
     constructor(
         public service: TService,
@@ -71,7 +71,7 @@ export abstract class GenericListComponent<TModel extends any, TService extends 
             this.dataSource.data = <TModel[]>this.genericService.getCacheTable(this.genericService.getLocation());
         }
 
-        this.service.getAll(this.all ? null : this.search).subscribe(
+        this.service.getAll().subscribe(
             (list) => {
                 this.dataSource.data = list;
                 sessionStorage.setItem(this.genericService.getLocation(), JSON.stringify(this.dataSource.data));
@@ -118,7 +118,7 @@ export abstract class GenericListComponent<TModel extends any, TService extends 
     }
 
     public viewDeleted(deleted: boolean) {
-        this.search.erased = deleted;
+        // this.search.erased = deleted;
         this.all = false;
         this.refreshData();
     }
@@ -134,10 +134,10 @@ export abstract class GenericListComponent<TModel extends any, TService extends 
         this.dataSource.sort = this.sort;
         this.dataSource.filterPredicate = (data: TModel, filter: string) => {
             if (JSON.stringify(data).toLowerCase().indexOf(filter) > 0) {
-                return true
+                return true;
             }
             return false;
-        }
+        };
 
         setTimeout(function () {
             this.displayedColumns = this.table._contentColumnDefs._results.map(o => o.name);

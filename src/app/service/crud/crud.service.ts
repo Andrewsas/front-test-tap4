@@ -50,7 +50,7 @@ export abstract class CrudService<T extends any> {
   }
 
   public update(data: T): Observable<any> {
-    const updateUrl = this.baseURL;
+    const updateUrl = this.baseURL + data.id;
     return this.http.put(updateUrl, data);
   }
 
@@ -62,7 +62,7 @@ export abstract class CrudService<T extends any> {
   private addParameter(data) {
     let params = new HttpParams();
     Object.keys(data).forEach((key) => {
-      params = params.append(key, data[key])
+      params = params.append(key, data[key]);
     });
     return params.toString();
   }

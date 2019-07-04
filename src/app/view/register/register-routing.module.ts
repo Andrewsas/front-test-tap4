@@ -21,6 +21,10 @@ const routes: Routes = [
       {
         path: 'form/:id',
         component: LanguageFormComponent
+      },
+      {
+        path: 'copy/:copy',
+        component: LanguageFormComponent
       }
     ]
   },
@@ -37,6 +41,10 @@ const routes: Routes = [
       },
       {
         path: 'form/:id',
+        component: FrameworkFormComponent
+      },
+      {
+        path: 'copy/:copy',
         component: FrameworkFormComponent
       }
     ]
