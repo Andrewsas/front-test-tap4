@@ -7,11 +7,16 @@
             <div class="card-icon">
               <i class="material-icons">visibility</i>
             </div>
-            <h4 class="card-title">{{ 'view.title' | translate }}</h4>
+            <div class="row">
+              <h4 class="card-title col-8">{{ 'view.title' | translate }}</h4>
+              <div class="col-4 text-right">
+                <i class="material-icons p-2 cinza" (click)="closeModal()">close</i>
+              </div>
+            </div>
           </div>
 
-          <div class="card-body">
-            <div class="row justify-content-center col-12 mt-3 ">
+          <div class="card-body justify-content-center">
+            <div class="row justify-content-center mt-3 ">
               <div class="col-12 col-md-4 text-center">
                 <div class="circle mx-auto ">
                   <img *ngIf="obj.image; else avata" [src]="obj.image" />
@@ -22,22 +27,22 @@
               </div>
               <div class="row align-self-center col-12 sm-12 col-md-6 p-0">
                 <div class="col-12">
-                  <span class="font-weight-bold">{{ 'framework.name' | translate }}: </span>
+                  <span class="font-weight-bold">{{ 'language.name' | translate }}: </span>
                   <p class="font-weight-light d-inline">{{ obj.name | uppercase }}</p>
                 </div>
                 <div class="col-12">
-                  <span class="font-weight-bold">{{ 'framework.creator' | translate }}: </span>
+                  <span class="font-weight-bold">{{ 'language.creator' | translate }}: </span>
                   <p class="font-weight-light d-inline">{{ obj?.creator }}</p>
                 </div>
                 <div class="col-12">
-                  <span class="font-weight-bold" *ngIf="obj.pis">{{ 'framework.site' | translate }}: </span>
+                  <span class="font-weight-bold">{{ 'language.site' | translate }}: </span>
                   <p class="font-weight-light d-inline">{{ obj?.site }}</p>
                 </div>
               </div>
-              <div class="row justify-content-start col-12 mt-4">
+              <div class="row col-12 col-md-10 mt-4">
                 <div class="col-12 col-sm-6 col-md-5">
                   <span class="font-weight-bold">{{ 'framework.language' | translate }}: </span>
-                  <p class="font-weight-light d-inline">{{ obj?.language }}</p>
+                  <p class="font-weight-light d-inline">{{ obj?.language?.name }}</p>
                 </div>
                 <div class="col-12 col-sm-6 col-md-5">
                   <span class="font-weight-bold">{{ 'framework.type' | translate }}: </span>
@@ -50,6 +55,14 @@
                 <div class="col-12 col-sm-6 col-md-5">
                   <span class="font-weight-bold">{{ 'framework.version' | translate }}: </span>
                   <p class="font-weight-light d-inline">{{ obj?.version }}</p>
+                </div>
+                <div class="col-12 col-sm-6 col-md-5">
+                  <span class="font-weight-bold">{{ 'pro' | translate }}: </span>
+                  <p class="font-weight-light d-inline">{{ pro }}</p>
+                </div>
+                <div class="col-12 col-sm-6 col-md-5">
+                  <span class="font-weight-bold">{{ 'contra' | translate }}: </span>
+                  <p class="font-weight-light d-inline">{{ contra }}</p>
                 </div>
               </div>
             </div>

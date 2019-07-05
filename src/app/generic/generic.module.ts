@@ -6,6 +6,7 @@ import { MaterialModule } from '../material.module';
 
 import { SpinerComponent } from './spiner/spiner.component';
 import { AutoCompleteComponent } from './autocomplete/autocomplete.component';
+import { ChipsComponent } from './chips/chips.component';
 
 @NgModule({
     imports: [
@@ -16,10 +17,12 @@ import { AutoCompleteComponent } from './autocomplete/autocomplete.component';
     declarations: [
         AutoCompleteComponent,
         SpinerComponent,
+        ChipsComponent
     ],
     exports: [
         AutoCompleteComponent,
         SpinerComponent,
+        ChipsComponent
     ],
     entryComponents : [SpinerComponent]
 })

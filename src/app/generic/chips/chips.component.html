@@ -1,0 +1,19 @@
+<mat-form-field class="example-chip-list">
+  <mat-chip-list #chipList>
+    <mat-chip *ngFor="let item of array" [selectable]="selectable" [removable]="!disabled" (removed)="remove(item)">
+      {{item}}
+      <mat-icon matChipRemove *ngIf="!disabled">cancel</mat-icon>
+    </mat-chip>
+    <input placeholder="{{ textLabel | translate }}" 
+    (keyup)="search($event.target.value)"
+    (click)="search('')" 
+    (focus)="search('')"
+    [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+      [matChipInputAddOnBlur]="addOnBlur" [matAutocomplete]="auto" (matChipInputTokenEnd)="add($event)" [disabled]="disabled">
+  </mat-chip-list>
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="add($event.option)">
+    <mat-option *ngFor="let complete of filter" [value]="complete">
+      {{complete}}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>

@@ -9,6 +9,8 @@ import { AlertService } from 'src/app/service/alert/alert.service';
 import { GenericService } from 'src/app/service/generic/GenericService';
 import { FrameworkService } from 'src/app/service/framework/framework.service';
 import { ToastService } from 'src/app/service/toast/toast.service';
+import { LanguageService } from 'src/app/service/language/language.service';
+import { Language } from 'src/app/model/language.model';
 
 @Component({
   selector: 'app-framework-form',
@@ -19,14 +21,29 @@ export class FrameworkFormComponent  extends GenericFormComponent<Framework, Fra
 
   @ViewChild('foto') foto: ElementRef;
 
+  public contra: string[] = [];
+  public pro: string[] = [];
+
+  public languages: Language[] = [];
+
   constructor(
     public service: FrameworkService,
     public alertServe: AlertService,
     public genericService: GenericService,
     public activatedRoute: ActivatedRoute,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private languageService: LanguageService
   ) {
     super(activatedRoute, service, Framework, alertServe, genericService);
+  }
+
+  ngOnInit() {
+    super.ngOnInit();
+    this.languageService.getAll().subscribe(
+      (data: Language[]) => {
+        this.languages = data;
+      }
+    );
   }
 
   checkPhoto() {
@@ -68,5 +85,15 @@ export class FrameworkFormComponent  extends GenericFormComponent<Framework, Fra
       }
       this.obj.name = txt.trim();
     }
+  }
+
+  beforeSave() {
+    this.obj.pro = this.pro.toString();
+    this.obj.against = this.contra.toString();
+  }
+
+  afterLoadOne() {
+    this.pro = this.obj.pro.split(',') ;
+    this.contra = this.obj.against.split(',');
   }
 }

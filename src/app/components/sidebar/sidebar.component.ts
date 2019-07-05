@@ -2,7 +2,6 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 import PerfectScrollbar from 'perfect-scrollbar';
-import { PEFORMACE_URL } from './../../constant/constant';
 import { Languages } from '../../generic/translate/translations';
 import { TranslateService } from '../../generic/translate/translate.service';
 import { AuthGuardService } from '../../security/auth-guard/authguard.service';
@@ -58,7 +57,6 @@ export const ROUTES: RouteInfo[] = [
 })
 export class SidebarComponent implements OnInit {
   public menuItems: any[];
-  public urlPeformace: String = PEFORMACE_URL;
   public photo: String = '';
   public username: String = 'Andrew';
   public initialUser: String = 'AS';

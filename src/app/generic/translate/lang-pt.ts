@@ -33,6 +33,8 @@ export const LANG_PT_TRANS = {
   'framework.msg.year': 'Ano de Criação do Framework é ',
   'framework.msg.size.year': 'Ano de Criação do Framework deve conter 4 caracteres.',
   'framework.msg.version': 'Versãodo Framework é ',
+  'pro': 'Prós do Framework',
+  'contra': 'Contra do Framework',
 
 // language
 'language': 'Linguagem',

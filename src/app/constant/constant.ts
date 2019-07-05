@@ -1,13 +1,10 @@
-export const RH_URL = 'http://127.0.0.1:3000/';
-
-export const PEFORMACE_URL = 'http://10.10.2.203:6580/inventus/rh/';
+export const RH_URL = 'http://127.0.0.1:8000/';
 
 export const Constant = {
-  BASE_URL: RH_URL,
-  BASE_URL_AUTH: RH_URL + 'auth/',
+  BASE_URL: RH_URL + 'api/',
   SEARCH: 'search?',
-  FRAMEWORK: 'framework',
-  LANGUAGE: 'language'
+  FRAMEWORK: 'framework/',
+  LANGUAGE: 'language/'
 };
 
 export const MessageType = {

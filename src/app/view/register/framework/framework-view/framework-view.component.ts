@@ -16,6 +16,9 @@ import { FrameworkService } from 'src/app/service/framework/framework.service';
 })
 export class FrameworkViewComponent extends GenericFormComponent<Framework, FrameworkService> implements OnInit {
 
+  public contra: string[] = [];
+  public pro: string[] = [];
+
   constructor(
     public activatedRoute: ActivatedRoute,
     public service: FrameworkService,
@@ -35,4 +38,10 @@ export class FrameworkViewComponent extends GenericFormComponent<Framework, Fram
   closeModal(): void {
     this.dialogRef.close();
   }
+
+  afterLoadOne() {
+    this.pro = this.obj.pro.split(',') ;
+    this.contra = this.obj.against.split(',');
+  }
+
 }
